@@ -12,7 +12,6 @@ public final class PaymentService {
         instancia = Objects.isNull(instancia) ? new PaymentService() : instancia;
         return instancia;
     }
-
     public OnlinePayment elejirPago(PaymentType tipoPago) {
         return tipoPago.pago;
     }
