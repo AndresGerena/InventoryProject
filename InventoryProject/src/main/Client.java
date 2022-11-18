@@ -2,21 +2,25 @@ package main;
 
 public class Client {
 
-    public String nombre;
-    public Integer edad;
-    public String correo;
-    public Integer nit;
+    public int IdClient;
+    public String NameC;
+    public String LastNameC;
+    public String UserNameC;
+    public int PhoneNumberC;
+    public String EmailC;
 
     public Client() {
 
     }
 
-    public Client(String nombre, Integer edad, String correo, Integer nit) {
+    public Client(int IdClient, String NameC, String LastNameC, String UserNameC, int PhoneNumberC, String EmailC) {
 
-        this.nombre = nombre;
-        this.edad = edad;
-        this.correo = correo;
-        this.nit = nit;
+        this.IdClient = IdClient;
+        this.NameC = NameC;
+        this.LastNameC = LastNameC;
+        this.UserNameC = UserNameC;
+        this.PhoneNumberC = PhoneNumberC;
+        this.EmailC = EmailC;
     }
 
     public String getNombre() {
@@ -50,7 +54,7 @@ public class Client {
     public void setNit(Integer nit) {
         this.nit = nit;
     }
-    
+
     //Métodos: Ver lista de productos, agregar al carrito, comprar
     public void listaProductos() {
     }
