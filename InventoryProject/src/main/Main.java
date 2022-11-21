@@ -3,8 +3,8 @@ package Main;
 import java.util.*;
 import java.io.File;
 
-import main.Client;
-import main.Admin;
+import Controller.Clients;
+import Controller.UAdmins;
 
 public class Main {
 
@@ -14,8 +14,8 @@ public class Main {
 
     //----"Data Base"----
     public static File archivo = new File("Productos.txt");
-    public static Admin adm = new Admin();
-    public static Client clt = new Client();
+    public static UAdmins adm = new UAdmins();
+    public static Clients clt = new Clients();
     //--------
 
     //----Factory Pattern----
@@ -37,7 +37,6 @@ public class Main {
                         switch (opc) {
                             case 1:
                                 System.out.println("\n----LISTA DE PRODUCTOS----");
-                                adm.listarProductos(archivo);
                                 break;
 
                             case 2:
@@ -91,7 +90,6 @@ public class Main {
                         switch (opa) {
                             case 1:
                                 System.out.println("\n----LISTA DE PRODUCTOS----");
-                                adm.listarProductos(archivo);
                                 break;
 
                             case 2:
@@ -106,7 +104,6 @@ public class Main {
                                 int stock = Integer.parseInt(sc.nextLine());
                                 System.out.println("Ingrese la fecha de vencimiento del producto: ");
                                 String vencimiento = sc.nextLine();
-                                adm.agregarProducto(archivo, codigo, nombre, precio, stock, vencimiento);
                                 break;
 
                             case 3:

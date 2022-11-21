@@ -1,5 +1,5 @@
 package main;
-
+//Pendiente C
 public class Activated extends State {
 
 //    public Activa(Usuario usuario) {
