@@ -78,7 +78,7 @@ public class Products {
         return PriceP;
     }
 
-    public void setPricePIdP(double PriceP) {
+    public void setPriceP(double PriceP) {
         this.PriceP = PriceP;
     }
 }

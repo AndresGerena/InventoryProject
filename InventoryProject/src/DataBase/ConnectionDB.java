@@ -27,6 +27,7 @@ public class ConnectionDB {
             rs = st.executeQuery("select * from products");
             while (rs.next()) {
                 System.out.println(rs.getDate("DatePurchaseP"));
+                System.out.println(rs.getInt("PriceP"));
             }
             cn.con.close();
         } catch (Exception e) {
