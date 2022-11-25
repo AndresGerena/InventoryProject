@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 
 public class ConnectionDB {
 
-    Connection con;
+    public Connection con;
 
     public ConnectionDB() {
         try {
@@ -18,7 +18,7 @@ public class ConnectionDB {
         }
     }
 
-    public static void main(String[] args) {
+    public void pruebaDB() {
         ConnectionDB cn = new ConnectionDB();
         Statement st;
         ResultSet rs;

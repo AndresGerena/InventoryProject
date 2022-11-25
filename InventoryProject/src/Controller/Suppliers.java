@@ -1,6 +1,7 @@
 package Controller;
 
 import DataBase.ConnectionDB;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -78,25 +79,25 @@ public class Suppliers {
 
     }
 
-//    public void readSupplier() { //Error: java.lang.NullPointerException
-//        ConnectionDB cn=new ConnectionDB();
-//        Statement st;
-//        ResultSet rs;
-//        try {
-//            st=cn.con.createStatement();
-//            rs=st.executeQuery("select * from suppliers");
-//            while (rs.next()) {                
-////                System.out.println(rs.getInt("NitS"));               
-////                System.out.println(rs.getString("CompanyNameS"));               
-////                System.out.println(rs.getString("EmailS"));               
-////                System.out.println(rs.getInt("PhoneNumberS"));               
-////                System.out.println(rs.getString("CityS"));               
-////                System.out.println(rs.getString("AdressS"));
-//            }
-//            cn.con.close();
-//        } catch (Exception e) {
-//            System.out.println("Error: "+e);
-//        }
+    public void readSupplier() {
+        ConnectionDB cn=new ConnectionDB();
+        Statement st;
+        ResultSet rs;
+        try {
+            st=cn.con.createStatement();
+            rs=st.executeQuery("select * from suppliers");
+            while (rs.next()) {                
+                System.out.println(rs.getInt("NitS"));               
+                System.out.println(rs.getString("CompanyNameS"));               
+                System.out.println(rs.getString("EmailS"));               
+                System.out.println(rs.getInt("PhoneNumberS"));               
+                System.out.println(rs.getString("CityS"));               
+                System.out.println(rs.getString("AdressS"));
+            }
+            cn.con.close();
+        } catch (Exception e) {
+            System.out.println("Error: "+e);
+        }
     }
 
     public void uploadSupplier() {
