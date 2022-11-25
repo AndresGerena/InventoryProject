@@ -8,7 +8,7 @@ public class Products {
     public String NameP;
     public double WheightP;
     public int StockP;
-    public Date DatePurchaseP;
+    public Date DatePurchaseP; //Pasar a String
     public Date ExpirationDateP;
     public double PriceP;
 

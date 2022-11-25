@@ -3,6 +3,7 @@ package Main;
 import java.util.*;
 import java.io.File;
 
+import Controller.Suppliers;
 import Controller.Clients;
 import Controller.UAdmins;
 
@@ -12,8 +13,8 @@ public class Main {
     public static String[] productos;
     public static Scanner sc = new Scanner(System.in);
 
-    //----"Data Base"----
-    public static File archivo = new File("Productos.txt");
+    //----Data Base----
+    public static Suppliers sp = new Suppliers();
     public static UAdmins adm = new UAdmins();
     public static Clients clt = new Clients();
     //--------
@@ -22,6 +23,9 @@ public class Main {
     //......
     //--------
     public static void main(String[] args) {
+        
+        sp.readSupplier();
+        
         System.out.println("Bienvenido al programa:\n----------PROYECTO INVENTARIO----------");
         System.out.println("Creado por: \nAndrés Gerena\nFabián Suarez\nCamila Mosquera\nSantiago Carvajal\nValery Ospina");
         do {
