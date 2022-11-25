@@ -1,10 +1,10 @@
 package Main;
 
 import java.util.*;
-import java.io.File;
 
-import main.Client;
-import main.Admin;
+import Controller.Suppliers;
+import Controller.Clients;
+import Controller.UAdmins;
 
 public class Main {
 
@@ -12,16 +12,19 @@ public class Main {
     public static String[] productos;
     public static Scanner sc = new Scanner(System.in);
 
-    //----"Data Base"----
-    public static File archivo = new File("Productos.txt");
-    public static Admin adm = new Admin();
-    public static Client clt = new Client();
+    //----Data Base----
+    public static Suppliers sp = new Suppliers();
+    public static UAdmins adm = new UAdmins();
+    public static Clients clt = new Clients();
     //--------
 
     //----Factory Pattern----
     //......
     //--------
     public static void main(String[] args) {
+        
+        sp.readSupplier();
+        
         System.out.println("Bienvenido al programa:\n----------PROYECTO INVENTARIO----------");
         System.out.println("Creado por: \nAndrés Gerena\nFabián Suarez\nCamila Mosquera\nSantiago Carvajal\nValery Ospina");
         do {
@@ -37,7 +40,6 @@ public class Main {
                         switch (opc) {
                             case 1:
                                 System.out.println("\n----LISTA DE PRODUCTOS----");
-                                adm.listarProductos(archivo);
                                 break;
 
                             case 2:
@@ -91,7 +93,6 @@ public class Main {
                         switch (opa) {
                             case 1:
                                 System.out.println("\n----LISTA DE PRODUCTOS----");
-                                adm.listarProductos(archivo);
                                 break;
 
                             case 2:
@@ -106,7 +107,6 @@ public class Main {
                                 int stock = Integer.parseInt(sc.nextLine());
                                 System.out.println("Ingrese la fecha de vencimiento del producto: ");
                                 String vencimiento = sc.nextLine();
-                                adm.agregarProducto(archivo, codigo, nombre, precio, stock, vencimiento);
                                 break;
 
                             case 3:

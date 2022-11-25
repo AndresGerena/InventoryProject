@@ -1,5 +1,5 @@
 package main;
-
+//Pendiente C
 public abstract class State {
 
 //    Usuario usuario;
