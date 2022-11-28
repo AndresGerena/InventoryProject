@@ -1,5 +1,10 @@
 package Controller;
 
+import DataBase.ConnectionDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import java.sql.Date;
 
 public class Products {
@@ -11,6 +16,9 @@ public class Products {
     public Date DatePurchaseP; //Pasar a String
     public Date ExpirationDateP;
     public double PriceP;
+
+    ConnectionDB cc = new ConnectionDB();
+    Connection con = cc.connection();
 
     public Products() {
 
@@ -80,5 +88,69 @@ public class Products {
 
     public void setPriceP(double PriceP) {
         this.PriceP = PriceP;
+    }
+    
+    public void createProduct(int idP, String nameP, double wheightP, int stockP, Date purchaseP, Date expirationP, double priceP) {
+        try {
+            String SQL = "insert into products (IdP,NameP,WheightP,StockP,DatePurchaseP,ExpirationDateP,PriceP) values (?,?,?,?,?,?,?)";
+            PreparedStatement pst = con.prepareStatement(SQL);
+            pst.setInt(1, idP);
+            pst.setString(2, nameP);
+            pst.setDouble(3, wheightP);
+            pst.setInt(4, stockP);
+            pst.setDate(5, purchaseP);
+            pst.setDate(6, expirationP);
+            pst.setDouble(7, priceP);
+            pst.executeUpdate();
+            pst.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Registration Error: " + e.getMessage() + "\nId " + idP + " Already Exists");
+        }
+    }
+
+    public void uploadProduct(int idP, String nameP, double wheightP, int stockP, Date purchaseP, Date expirationP, double priceP) {
+        try {
+            String SQL = "update products set NameP=?,WheightP=?,StockP=?,DatePurchaseP=?,ExpirationDateP=?,PriceP=? where IdP=?";
+            PreparedStatement pst = con.prepareStatement(SQL);
+            pst.setString(1, nameP);
+            pst.setDouble(2, wheightP);
+            pst.setInt(3, stockP);
+            pst.setDate(4, purchaseP);
+            pst.setDate(5, expirationP);
+            pst.setDouble(6, priceP);
+            pst.setInt(7, idP);
+            pst.executeUpdate();
+            pst.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Registration Error: " + e.getMessage() + "\nId " + idP + " Doesn't Exists");
+        }
+    }
+
+    public void deleteProduct(int idP) {
+        try {
+            String SQL = "Delete from products where IdP=?";
+            PreparedStatement pst = con.prepareStatement(SQL);
+            pst.setInt(1, idP);
+            pst.executeUpdate();
+            pst.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Registration Error: " + e.getMessage() + "\nId " + idP + " Doesn't Exists");
+        }
+    }
+
+    public boolean checkTableDataProducts(int idP) {
+        try {
+            PreparedStatement pst = con.prepareStatement("Select * from products Where IdP=?");
+            pst.setInt(1, idP);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return false;
+        }
     }
 }

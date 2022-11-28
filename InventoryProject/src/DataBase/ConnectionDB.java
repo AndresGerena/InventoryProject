@@ -2,36 +2,20 @@ package DataBase;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
-import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 public class ConnectionDB {
 
-    public Connection con;
+    public Connection connect=null;
 
-    public ConnectionDB() {
+    public Connection connection(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/InventoryProject", "root", "");
+            connect=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/inventoryproject","root","");
+            System.out.println("Successful Connection!");
         } catch (Exception e) {
-            System.out.println("Error: " + e);
+            JOptionPane.showMessageDialog(null, "Connection Error: "+e.getMessage());
         }
-    }
-
-    public void pruebaDB() {
-        ConnectionDB cn = new ConnectionDB();
-        Statement st;
-        ResultSet rs;
-        try {
-            st = cn.con.createStatement();
-            rs = st.executeQuery("select * from products");
-            while (rs.next()) {
-                System.out.println(rs.getDate("DatePurchaseP"));
-                System.out.println(rs.getInt("PriceP"));
-            }
-            cn.con.close();
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
+        return connect;
     }
 }
