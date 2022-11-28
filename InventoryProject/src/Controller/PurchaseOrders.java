@@ -9,10 +9,10 @@ import java.sql.Date;
 
 public class PurchaseOrders {
 
-    public int IdO;
+    public int IdPO;
     public String CompanyNameC;
     public String NameA;
-    public double TotalO;
+    public double TotalN;
 
     ConnectionDB cc = new ConnectionDB();
     Connection con = cc.connection();

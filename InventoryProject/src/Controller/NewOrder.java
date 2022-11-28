@@ -9,11 +9,11 @@ import java.sql.Date;
 
 public class NewOrder {
 
-    public int IdP;
-    public String NameP;
-    public double QuantityPO;
-    public double PriceP;
-    public double TotalPO;
+    public int IdPN;
+    public String NamePN;
+    public double QuantityN;
+    public double PricePN;
+    public double TotalN;
 
     ConnectionDB cc = new ConnectionDB();
     Connection con = cc.connection();
