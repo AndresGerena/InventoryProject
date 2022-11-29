@@ -79,7 +79,7 @@ public class Clients {
         this.AdressC = AdressC;
     }
     
-    public void createClients(int nitC, String cnameC, String emailC, long phoneC, String cityC, String adressC) {
+    public void createClient(int nitC, String cnameC, String emailC, long phoneC, String cityC, String adressC) {
         try {
             String SQL = "insert into clients (NitC,CompanyNameC,EmailC,PhoneNumberC,CityC,AdressC) values (?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(SQL);
@@ -96,7 +96,7 @@ public class Clients {
         }
     }
 
-    public void uploadClients(int nitC, String cnameC, String emailC, long phoneC, String cityC, String adressC) {
+    public void uploadClient(int nitC, String cnameC, String emailC, long phoneC, String cityC, String adressC) {
         try {
             String SQL = "update clients set CompanyNameC=?,EmailC=?,PhoneNumberC=?,CityC=?,AdressC=? where NitC=?";
             PreparedStatement pst = con.prepareStatement(SQL);
@@ -113,7 +113,7 @@ public class Clients {
         }
     }
 
-    public void deleteClients(int nitC) {
+    public void deleteClient(int nitC) {
         try {
             String SQL = "Delete from clients where NitC=?";
             PreparedStatement pst = con.prepareStatement(SQL);

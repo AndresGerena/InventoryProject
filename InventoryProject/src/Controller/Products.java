@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import java.sql.Date;
 
 public class Products {
 
@@ -13,8 +12,8 @@ public class Products {
     public String NameP;
     public double WheightP;
     public int StockP;
-    public Date DatePurchaseP; //Pasar a String
-    public Date ExpirationDateP;
+    public String DatePurchaseP;
+    public String ExpirationDateP;
     public double PriceP;
 
     ConnectionDB cc = new ConnectionDB();
@@ -24,7 +23,7 @@ public class Products {
 
     }
 
-    public Products(int IdP, String NameP, double WheightP, int StockP, Date DatePurchaseP, Date ExpirationDateP, double PriceP) {
+    public Products(int IdP, String NameP, double WheightP, int StockP, String DatePurchaseP, String ExpirationDateP, double PriceP) {
         this.IdP = IdP;
         this.NameP = NameP;
         this.WheightP = WheightP;
@@ -66,19 +65,19 @@ public class Products {
         this.StockP = StockP;
     }
 
-    public Date getDatePurchaseP() {
+    public String getDatePurchaseP() {
         return DatePurchaseP;
     }
 
-    public void setDatePurchaseP(Date DatePurchaseP) {
+    public void setDatePurchaseP(String DatePurchaseP) {
         this.DatePurchaseP = DatePurchaseP;
     }
 
-    public Date getExpirationDateP() {
+    public String getExpirationDateP() {
         return ExpirationDateP;
     }
 
-    public void setExpirationDateP(Date ExpirationDateP) {
+    public void setExpirationDateP(String ExpirationDateP) {
         this.ExpirationDateP = ExpirationDateP;
     }
 
@@ -90,7 +89,7 @@ public class Products {
         this.PriceP = PriceP;
     }
     
-    public void createProduct(int idP, String nameP, double wheightP, int stockP, Date purchaseP, Date expirationP, double priceP) {
+    public void createProduct(int idP, String nameP, double wheightP, int stockP, String purchaseP, String expirationP, double priceP) {
         try {
             String SQL = "insert into products (IdP,NameP,WheightP,StockP,DatePurchaseP,ExpirationDateP,PriceP) values (?,?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(SQL);
@@ -98,8 +97,8 @@ public class Products {
             pst.setString(2, nameP);
             pst.setDouble(3, wheightP);
             pst.setInt(4, stockP);
-            pst.setDate(5, purchaseP);
-            pst.setDate(6, expirationP);
+            pst.setString(5, purchaseP);
+            pst.setString(6, expirationP);
             pst.setDouble(7, priceP);
             pst.executeUpdate();
             pst.close();
@@ -108,15 +107,15 @@ public class Products {
         }
     }
 
-    public void uploadProduct(int idP, String nameP, double wheightP, int stockP, Date purchaseP, Date expirationP, double priceP) {
+    public void uploadProduct(int idP, String nameP, double wheightP, int stockP, String purchaseP, String expirationP, double priceP) {
         try {
             String SQL = "update products set NameP=?,WheightP=?,StockP=?,DatePurchaseP=?,ExpirationDateP=?,PriceP=? where IdP=?";
             PreparedStatement pst = con.prepareStatement(SQL);
             pst.setString(1, nameP);
             pst.setDouble(2, wheightP);
             pst.setInt(3, stockP);
-            pst.setDate(4, purchaseP);
-            pst.setDate(5, expirationP);
+            pst.setString(4, purchaseP);
+            pst.setString(5, expirationP);
             pst.setDouble(6, priceP);
             pst.setInt(7, idP);
             pst.executeUpdate();
