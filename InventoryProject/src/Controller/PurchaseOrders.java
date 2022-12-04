@@ -16,4 +16,7 @@ public class PurchaseOrders {
 
     ConnectionDB cc = new ConnectionDB();
     Connection con = cc.connection();
+    
+//    combo box = 15:09, 19:56 del video (ELECCIÓN DESPREGABLE)
+//https://www.youtube.com/watch?v=zh3_Gn_eXhM
 }
